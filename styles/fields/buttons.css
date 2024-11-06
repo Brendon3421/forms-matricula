@@ -1,0 +1,27 @@
+button {
+    all: unset;
+    font-weight: 500;
+    color: var(--text-textiary);
+    padding: 0.8rem 1.5rem;
+
+    border-radius: .5rem;
+    cursor: pointer;
+
+}
+
+.btn-primary {
+    all: unset;
+    color: var(--text-textiary);
+    padding: 0.8rem 1.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    color: #ffff;
+    background-color: #E43A12;
+}
+.btn-primary:hover{
+    background-color: var(--stronke-hightlight);
+}
+
+.btn-secondary:hover{
+    border:1px solid var(--stronke-hightlight)
+}

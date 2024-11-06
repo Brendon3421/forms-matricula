@@ -1,0 +1,104 @@
+input,
+textarea,
+select {
+    appearance: none;
+    width: 100%;
+    border-radius: .5rem;
+    border: 1px solid var(--stronke-default);
+    padding: .75rem 1rem;
+    font: var(--text)
+}
+
+label {
+    font: var(--text-sm);
+    color: var(--text-secondary);
+
+    display: block;
+    margin-bottom: .25rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: .25rem solid var(--surface-sencodary);
+    border: .125rem solid var(--stroke-hightlight);
+}
+
+input[type="date"] {
+    position: relative;
+    /* Ensure the input is a positioned element */
+    padding-left: 2rem;
+    /* Add padding to avoid text overlap with the icon */
+    border: 1px solid #ccc;
+    /* Optional: add a border */
+    border-radius: 4px;
+    /* Optional: rounded corners */
+    height: 2.5rem;
+    /* Optional: adjust height */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    /* Hide the default calendar indicator */
+}
+
+input[type="date"]::before {
+    content: "";
+    position: absolute;
+    background: url(../../assets/icons/calendar-03.svg) no-repeat center center;
+    background-size: 1.25rem 1.25rem;
+    /* Adjust the icon size */
+    width: 1.25rem;
+    /* Set width */
+    height: 1.25rem;
+    /* Set height */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Center the icon vertically */
+    pointer-events: none;
+    /* Prevent the icon from blocking input interaction */
+    right: 1rem;
+}
+
+select {
+    background: url(../../assets/icons/arrow-down-01.svg) no-repeat calc(100% - 1rem);
+}
+
+.address .flex {
+    gap: 1.25rem;
+}
+
+input {
+    &[disabled] {
+        background-color: var(--surface-primary);
+        border: 1px solid var(--stronke-default);
+        color: var(--text);
+    }
+    
+    &:invalid {
+        border: 0.125rem solid var(--semantic-error);
+    }
+    & + small{
+        font: var(--font-family);
+        color: #78716C;
+
+        display: inline-block;
+        margin-top: .25rem;
+    }
+
+    &[required] + .error {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        font: var(--text-sm);
+        color: var(--semantic-error);
+        margin-top: .25rem;
+    }
+    &:valid + .error{
+        display: none;
+    }
+
+}
+.error{
+    color: var(--semantic-error);
+}

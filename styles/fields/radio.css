@@ -1,0 +1,57 @@
+/* Contêiner da lista de botões de rádio */
+label + .radio-wrapper {
+    margin-top: 1rem;
+}
+
+.radio-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: 0.5rem;
+}
+
+/* Estilo individual de cada item de rádio */
+.radio-inner {
+    position: relative;
+    border: 1px solid var(--stronke-default);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+/* Efeito de borda ao passar o mouse */
+.radio-inner:hover {
+    border-color: var(--stronke-highlight);
+}
+
+/* Estilo da imagem do botão de rádio */
+.radio-image {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('../../assets/icons/circle.svg');
+    background-size: cover;
+    margin-bottom: 0.5rem;
+    transition: background-image 0.2s;
+}
+
+/* Oculta o input do botão de rádio */
+.radio-inner input[type="radio"] {
+    display: none;
+}
+
+/* Quando o input estiver selecionado, aplica uma imagem diferente */
+.radio-inner input[type="radio"]:checked + label .radio-image {
+    background-image: url('../../assets/icons/checkmark-circle-01.svg');
+}
+
+/* Estilo do label para tornar o conteúdo clicável */
+.radio-inner label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

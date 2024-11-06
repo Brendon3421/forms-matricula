@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Adiciona SweetAlert -->
+    <title>Matricula</title>
+</head>
+
+<body>
+    <div id="app">
+        <main>
+            <div class="main-container">
+                <div class="back">
+                    <img src="assets/icons/arrow-left-02.svg" alt="Voltar">
+                    <span>Voltar</span>
+                </div>
+                <h1>Formulario de Matricula</h1>
+                <p>Preencha os dados abaixo para matricular seu filho na escola de educação infantil Estrelas do Amanhã.
+                </p>
+
+                <form>
+                    <fieldset class="child-info">
+                        <legend>Informacoes da crianca</legend>
+                        <div class="input-wrapper">
+                            <label for="fullname">Nome completo</label>
+                            <input type="text" name="fullname" id="fullname" placeholder="Qual o nome da crianca">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="data">Data de Nascimento</label>
+                            <input type="date" name="birth" id="birth" lang="pt-BR">
+                        </div>
+
+                        <div class="select-wrapper">
+                            <label for="gender">Genero</label>
+                            <select name="gender" id="gender">
+                                <option value="female">Feminino</option>
+                                <option value="male">Masculino</option>
+                                <option value="na">Prefiro nao responder</option>
+                            </select>
+                        </div>
+
+                        <div class="text-wrapper">
+                            <label for="medical-info">Informacoes medicas</label>
+                            <textarea name="medical-info" id="medical-info" cols="30" rows="10"
+                                placeholder="A crianca Possui alguma condicao medica que a escola deve estar ciente?"></textarea>
+                        </div>
+
+                        <div class="droparea-wrapper">
+
+                            <label for="birth-file">Certidao de Nascimento</label>
+                            <div class="dropzone">
+                                <input type="file" id="birth-file" name="birth-file">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M34.9552 18.0221C34.97 18.022 34.985 18.022 35 18.022C39.9706 18.022 44 22.0588 44 27.0386C44 31.6796 40.5 35.5016 36 36M34.9552 18.0221C34.9848 17.6921 35 17.3579 35 17.0202C35 10.9339 30.0752 6 24 6C18.2465 6 13.5247 10.4253 13.0408 16.0638M34.9552 18.0221C34.7506 20.2952 33.8572 22.3692 32.4856 24.033M13.0408 16.0638C7.96796 16.5475 4 20.8278 4 26.0366C4 30.8834 7.43552 34.9264 12 35.8546M13.0408 16.0638C13.3565 16.0337 13.6765 16.0183 14 16.0183C16.2516 16.0183 18.3295 16.7639 20.001 18.022"
+                                        stroke="#D6D3D1" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M24 26V42M24 26C22.5996 26 19.9831 29.9886 19 31M24 26C25.4004 26 28.017 29.9886 29 31"
+                                        stroke="#D6D3D1" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <p>Clique para <br>selecionar os arquivos </p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="address">
+                        <legend>Endereço Residencial</legend>
+                        <div class="input-wrapper">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" onblur="pesquisacep(this.value)">
+                        </div>
+                        <div class="flex">
+                            <div class="input-wrapper flex-2">
+                                <label for="rua">Rua</label>
+                                <input type="text" id="rua" name="street">
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <label for="number">Número</label>
+                                <input type="number" id="number" name="number">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="input-wrapper flex-2">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="city">
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <label for="uf">Estado</label>
+                                <input type="text" id="uf" name="state">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="gardian">
+                        <legend>Informacoes do Responsavel</legend>
+                        <div class="input-wrapper">
+                            <label for="guardian">Nome do Responsavel</label>
+                            <input type="text" name="guardian" id="guardian">
+                            <small>Principal responsável legal e contato de emergência</small>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(10) 9 8765-4321">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="mail">Email</label>
+                            <input type="email" name="email" id="email" required>
+                            <div class="error">
+                                <img src="assets/icons/alert-circle.svg" alt="Imagem de error">
+                                <span>Insira um e-mail válido</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="enroll-options">
+                        <legend>Opções de matrícula</legend>
+
+                        <!-- Turno de estudo -->
+                        <div class="input-wrapper">
+                            <label>Selecione o turno de estudo</label>
+                            <div class="radio-wrapper">
+                                <div class="radio-inner">
+                                    <input type="radio" name="study-shift" value="morning" id="morning">
+                                    <label for="morning">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/sun-cloud-02.svg" alt="solzinho">
+                                        Manhã
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="study-shift" value="evening" id="evening">
+                                    <label for="evening">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/sun-02.svg" alt="nuvem">
+                                        Tarde
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Esporte preferido -->
+                        <div class="input-wrapper">
+                            <label>Em qual esporte você gostaria de inscrever seu filho?</label>
+                            <div class="radio-wrapper">
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="football" id="football">
+                                    <label for="football">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/football.svg" alt="Ícone de futebol">
+                                        Futebol
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="basketball" id="basketball">
+                                    <label for="basketball">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/basketball-02.svg" alt="Ícone de basquete">
+                                        Basquete
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="swimming" id="swimming">
+                                    <label for="swimming">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/swimming.svg" alt="Ícone de natação">
+                                        Natação
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="yoga" id="yoga">
+                                    <label for="yoga">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/yoga-02.svg" alt="Ícone de yoga">
+                                        Yoga
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="volleyball" id="volleyball">
+                                    <label for="volleyball">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/volleyball.svg" alt="Ícone de vôlei">
+                                        Volley
+                                    </label>
+                                </div>
+                                <div class="radio-inner">
+                                    <input type="radio" name="sport" value="boxing" id="boxing">
+                                    <label for="boxing">
+                                        <div class="radio-image"></div>
+                                        <img src="assets/icons/Vector.svg" alt="Ícone de boxe">
+                                        Boxe
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="terms-wrapper input-wrapper checkbox-wrapper">
+                                <input type="checkbox" name="terms" id="terms">
+                                <div class="checkbox-image"></div>
+                                <label for="terms">
+                                    Declaro que li e concordo com os <strong>Termos e Condições</strong> e com a
+                                    <strong>Política de Privacidade</strong> da escola Estrela do Amanhã.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="actions-wrapper">
+                            <button class="btn-secondary" type="button">
+                                Salvar respostas
+                            </button>
+
+                            <button class="btn-primary" type="submit">
+                                Salvar respostas
+                            </button>
+                        </div>
+
+                    </fieldset>
+
+
+
+                </form>
+            </div>
+        </main>
+        <aside>
+            <div class="aside-container">
+                <header>
+                    <img src="assets/Logo.png" alt="">
+                    <h2>
+                        Porque cada momento de <strong> aprendizado </strong>conta
+                    </h2>
+                    <p>
+                        Inscreva seu filho em nossa escola e veja-o florescer em um ambiente acolhedor, seguro e
+                        estimulante.
+                    </p>
+                </header>
+                <img src="assets/Illustration (1).png" alt="Professor Illustration">
+            </div>
+        </aside>
+    </div>
+</body>
+
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Função para pesquisar o CEP
+    function pesquisacep(cep) {
+        const cepInput = document.getElementById('cep');
+        const ruaInput = document.getElementById('rua');
+        const cidadeInput = document.getElementById('cidade');
+        const ufInput = document.getElementById('uf');
+
+        // Verifica se o CEP possui 8 caracteres
+        if (cep.length === 8 && /^[0-9]+$/.test(cep)) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        // Preenche os campos de endereço com os dados do CEP
+                        ruaInput.value = data.logradouro;
+                        cidadeInput.value = data.localidade;
+                        ufInput.value = data.uf;
+                    } else {
+                        // Exibe mensagem de erro com SweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro!',
+                            text: 'CEP não encontrado!',
+                        });
+                    }
+                })
+                .catch(() => {
+                    // Exibe mensagem de erro com SweetAlert em caso de falha na requisição
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro!',
+                        text: 'Não foi possível conectar ao servidor.',
+                    });
+                });
+        } else {
+            // Exibe mensagem de erro se o CEP não for válido
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Por favor, insira um CEP válido!',
+            });
+        }
+    }
+
+    // Função para limpar o formulário
+    function limparFormulario() {
+        const ruaInput = document.getElementById('rua');
+        const cidadeInput = document.getElementById('cidade');
+        const ufInput = document.getElementById('uf');
+        
+        ruaInput.value = '';
+        cidadeInput.value = '';
+        ufInput.value = '';
+    }
+
+    // Adiciona evento de blur ao campo CEP
+    const cepField = document.getElementById('cep');
+    if (cepField) {
+        cepField.addEventListener('blur', function () {
+            if (cepField.value) {
+                pesquisacep(cepField.value);
+            } else {
+                limparFormulario();  // Limpa os campos de endereço quando o CEP for apagado
+            }
+        });
+    }
+
+    // Lidar com o envio do formulário (exemplo de SweetAlert)
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Aqui você pode validar os campos ou fazer outras verificações
+            Swal.fire({
+                icon: 'success',
+                title: 'Formulário enviado com sucesso!',
+                text: 'Os dados foram enviados corretamente.',
+            });
+        });
+    }
+});
+
+</script>

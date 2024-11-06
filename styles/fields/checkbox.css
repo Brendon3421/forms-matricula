@@ -1,0 +1,41 @@
+.terms-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.checkbox-wrapper {
+    position: relative;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0; /* Torna o checkbox invisível */
+    cursor: pointer; /* Garante que ele seja clicável */
+}
+
+.checkbox-image {
+    width: 2rem;
+    height: 1.5rem;
+    background-image: url('../../assets/icons/square-hover.svg');
+    background-size: cover;
+    cursor: pointer;
+    transition: background-image 0.2s;
+    
+}
+
+.checkbox-wrapper input[type="checkbox"]:hover + .checkbox-image {
+    background-image: url('../../assets/icons/square-hover.svg');
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + .checkbox-image {
+    background-image: url('../../assets/icons/checkmark-square-01.svg');
+}
+
+.terms-wrapper strong {
+    font-weight: 500;
+    color: var(--text-textiary);
+}
